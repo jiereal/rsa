@@ -8,6 +8,24 @@ import {BigInteger, nbi, parseBigInt} from "./jsbn";
 import {SecureRandom} from "./rng";
 
 
+function pkcs1NoPadding(s: string, n:number) {
+    if(n < (s.length + 11)) { // TODO: fix for utf-8
+      console.error("Message too long for RSA");
+      return null;
+    }
+    var ba = new Array();
+    var i = s.length - 1;
+    while(i >= 0 && n > 0) {
+      var c = s.charCodeAt(i--);
+      if(c < 256) { // encode using utf-8
+        ba[--n] = c;
+      } else {
+        throw Error('There is not valid character with code: ' + c);
+      }
+    }
+    
+    return new BigInteger(ba);
+  }
 // function linebrk(s,n) {
 //   var ret = "";
 //   var i = 0;
@@ -133,9 +151,9 @@ export class RSAKey {
 
     // RSAKey.prototype.encrypt = RSAEncrypt;
     // Return the PKCS#1 RSA encryption of "text" as an even-length hex string
-    public encrypt(text:string) {
+    public encrypt(text:string, paddingMode: 'nopadding' | 'pkcs1padding' = 'pkcs1padding') {
         const maxLength = (this.n.bitLength() + 7) >> 3;
-        const m = pkcs1pad2(text, maxLength);
+        const m = paddingMode === 'pkcs1padding' ? pkcs1pad2(text, maxLength): pkcs1NoPadding(text, maxLength);
 
         if (m == null) {
             return null;
