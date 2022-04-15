@@ -57,7 +57,7 @@ export declare class JSEncrypt {
      * @return {string} the encrypted string encoded in base64
      * @public
      */
-    encrypt(str: string): string | false;
+    encrypt(str: string, paddingMode?: 'nopadding' | 'pkcs1padding'): string | false;
     /**
      * Proxy method for RSAKey object's sign.
      * @param {string} str the string to sign

@@ -1,6 +1,6 @@
 {
   "name": "@jiereal/rsa",
-  "version": "3.2.3",
+  "version": "3.2.4",
   "description": "A Javascript library to perform OpenSSL RSA Encryption, Decryption, and Key Generation.",
   "main": "bin/jsencrypt.js",
   "module": "lib/index.js",
