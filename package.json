@@ -1,5 +1,5 @@
 {
-  "name": "jsencrypt",
+  "name": "@jierea/rsa",
   "version": "3.2.2",
   "description": "A Javascript library to perform OpenSSL RSA Encryption, Decryption, and Key Generation.",
   "main": "bin/jsencrypt.js",
@@ -37,13 +37,13 @@
       "url": "https://github.com/jmgaya"
     }
   ],
-  "homepage": "http://www.travistidwell.com/jsencrypt",
+  "homepage": "https://github.com/jiereal/rsa",
   "repository": {
     "type": "git",
-    "url": "git://github.com/travist/jsencrypt.git"
+    "url": "https://github.com/jiereal/rsa.git"
   },
   "bugs": {
-    "url": "http://github.com/travist/jsencrypt/issues"
+    "url": "https://github.com/jiereal/rsa/issues"
   },
   "license": "MIT"
 }

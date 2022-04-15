@@ -18,3 +18,4 @@ lib/asn1js/*.js.map
 
 lib/jsbn/*.js
 lib/jsbn/*.js.map
+.npmrc
