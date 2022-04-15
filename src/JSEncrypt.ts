@@ -92,10 +92,15 @@ export class JSEncrypt {
      * @return {string} the encrypted string encoded in base64
      * @public
      */
-    public encrypt(str:string) {
+    public encrypt(str:string, mode: 'nopadding' | 'pkcs1padding') {
         // Return the encrypted string.
         try {
-            return hex2b64(this.getKey().encrypt(str));
+            var blockSize = 117;
+            var hexs = [];
+            for(var i=0; i< (Math.ceil(str.length / blockSize)); i++) {
+                hexs.push(this.getKey().encrypt(str.slice(i * blockSize, i * blockSize + blockSize), mode));
+            }
+            return hex2b64(hexs.join(''));
         } catch (ex) {
             return false;
         }
